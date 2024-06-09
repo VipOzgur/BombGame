@@ -1,0 +1,40 @@
+.red{
+    background-color: red;
+}
+#oldParent{
+    width: 615px;
+    height: 700px;
+    background-color: bisque;
+    border: solid red 2px;
+    margin-left: 25%;
+    margin-top: 2%;
+}
+#parent{
+    width: 610px;
+    height: 610px;
+    background-color: bisque;
+    border-top: solid red 2px;
+    margin-top: 47px;
+}
+#yeniBtn{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.birim{
+    margin:0px !important; 
+    height: 100px;
+    float: left;
+}
+.bomb{
+    background-image: url(bomb.png);
+}
+button>img{
+    height: 98px;
+    width: 99px;  
+}
+.green{
+    background-color: greenyellow;
+}
+.crimson{
+    background-color: rgb(242, 35, 55);
+}

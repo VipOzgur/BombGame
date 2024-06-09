@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayın Tarlası</title>
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <script src="jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        function randomSayi() {
+            return Math.floor(Math.random() * 5);
+            console.log("ok")
+        }
+        $(document).ready(function () {
+            $(".birim").on()
+            var totalBomb = 0;
+            var gameover = false;
+            var kenar = ["0", "1", "2", "3", "4", "5", "6", "7", "70", "71", "72", "73", "74", "75", "76", "77", "10", "20", "30", "40", "50", "60", "70", "17", "27", "37", "47", "57", "67", "77"];
+            $(".birim").each(function () {
+                $(this).attr('durum', randomSayi());
+                console.log(randomSayi());
+                if ($(this).attr('durum') == 1) { totalBomb++; }
+            });
+
+            $(".birim").on('click', function () {
+                if (gameover) {
+                    alert("Game Over * Oyun Bitti");
+                    return;
+                }
+                var kontrol = [];
+                var adet = 0;
+                var id = $(this).attr('id');
+                if ($(this).attr('durum') == 1) {
+                    $("button[durum='1']").addClass('bomb')
+                    alert("Game over");
+                    gameover = true;
+                }
+                else {
+                    kontrol.push(Number(id) - 11);
+                    kontrol.push(Number(id) - 10);
+                    kontrol.push(Number(id) - 9);
+                    kontrol.push(Number(id) - 1);
+                    kontrol.push(Number(id) + 1);
+                    kontrol.push(Number(id) + 9);
+                    kontrol.push(Number(id) + 10);
+                    kontrol.push(Number(id) + 11);
+
+                    kontrol.forEach(element => {
+                        if (kenar.includes(element)) {
+                            return;
+                        }
+                        else if ($("#" + element).attr('durum') == 1) {
+                            adet++;
+                        }
+                        $(this).text(adet);
+                    });
+                    $(this).attr('durum', 7);
+                    $(this).addClass(adet > 1 ? "crimson" : "green");
+                    var skor = Number($("[durum='7']").length) + Number(totalBomb);
+                    if (skor == 36) {
+                        alert("Oyunu Kazandınız * You are Win");
+                        $("button[durum='1']").addClass('bomb')
+                        gameover = true;
+                        console.log(skor + " skor");
+                        console.log($("[durum='7']").length + " seçili");
+                        console.log(totalBomb + " Totalbomb");
+                    }
+
+                }
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="oldParent">
+        <button id="yeniBtn" onclick="window.location.reload(false)">Yeni Oyun</button>
+        <div id="parent" class="">
+            <div class="satir col-12">
+                <button id="11" class="birim col-2" durum="1"></button>
+                <button id="12" class="birim col-2" durum="1"></button>
+                <button id="13" class="birim col-2" durum="1"></button>
+                <button id="14" class="birim col-2" durum="1"></button>
+                <button id="15" class="birim col-2" durum="1"></button>
+                <button id="16" class="birim col-2" durum="1"></button>
+            </div>
+            <div class="satir col-12">
+                <button id="21" class="birim col-2" durum="0"></button>
+                <button id="22" class="birim col-2" durum="0"></button>
+                <button id="23" class="birim col-2" durum="0"></button>
+                <button id="24" class="birim col-2" durum="0"></button>
+                <button id="25" class="birim col-2" durum="0"></button>
+                <button id="26" class="birim col-2" durum="0"></button>
+            </div>
+            <div class="satir col-12">
+                <button id="31" class="birim col-2" durum="0"></button>
+                <button id="32" class="birim col-2" durum="0"></button>
+                <button id="33" class="birim col-2" durum="0"></button>
+                <button id="34" class="birim col-2" durum="0"></button>
+                <button id="35" class="birim col-2" durum="0"></button>
+                <button id="36" class="birim col-2" durum="0"></button>
+            </div>
+            <div class="satir col-12">
+                <button id="41" class="birim col-2" durum="0"></button>
+                <button id="42" class="birim col-2" durum="0"></button>
+                <button id="43" class="birim col-2" durum="0"></button>
+                <button id="44" class="birim col-2" durum="0"></button>
+                <button id="45" class="birim col-2" durum="0"></button>
+                <button id="46" class="birim col-2" durum="0"></button>
+            </div>
+            <div class="satir col-12">
+                <button id="51" class="birim col-2" durum="0"></button>
+                <button id="52" class="birim col-2" durum="0"></button>
+                <button id="53" class="birim col-2" durum="0"></button>
+                <button id="54" class="birim col-2" durum="0"></button>
+                <button id="55" class="birim col-2" durum="0"></button>
+                <button id="56" class="birim col-2" durum="0"></button>
+            </div>
+            <div class="satir col-12">
+                <button id="61" class="birim col-2" durum="0"></button>
+                <button id="62" class="birim col-2" durum="0"></button>
+                <button id="63" class="birim col-2" durum="0"></button>
+                <button id="64" class="birim col-2" durum="0"></button>
+                <button id="65" class="birim col-2" durum="0"></button>
+                <button id="66" class="birim col-2" durum="0"></button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

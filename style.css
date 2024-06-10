@@ -28,6 +28,12 @@
 .bomb{
     background-image: url(bomb.png);
 }
+.flag{
+    background-image: url(flag.png);
+    background-size: cover; /* Resmi div'in boyutlarına sığacak şekilde ayarlar */
+    background-repeat: no-repeat; /* Resmin tekrarlanmasını engeller */
+    background-position: center; /* Resmi ortalar*/
+}
 button>img{
     height: 98px;
     width: 99px;  

@@ -36,8 +36,9 @@
                 var kontrol = [];
                 var adet = 0;
                 var id = $(this).attr('id');
+                $(this).removeClass("flag");
                 if ($(this).attr('durum') == 1) {
-                    $("button[durum='1']").addClass('bomb')
+                    $("button[durum='1']").addClass('bomb').removeClass('flag');
                     alert("Game over");
                     gameover = true;
                 }
@@ -72,6 +73,16 @@
                         console.log(totalBomb + " Totalbomb");
                     }
 
+                }
+            });
+            $("button").not("#yeniBtn").contextmenu(function (event) {
+                event.preventDefault(); // Sağ tık menüsünün gelmesini engeller
+                if (gameover) {
+                    alert("Game Over * Oyun Bitti");
+                    return;
+                }
+                if(!$(this).hasClass("green")&&!$(this).hasClass("crimson")){
+                    $(this).toggleClass("flag"); // Div'in arka planına resim ekler
                 }
             });
 
